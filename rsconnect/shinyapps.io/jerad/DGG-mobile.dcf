@@ -1,0 +1,14 @@
+name: DGG-mobile
+title: DGG-mobile
+username:
+account: jerad
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4110639
+bundleId: 4588602
+url: https://jerad.shinyapps.io/DGG-mobile/
+when: 1620795443.48044
+lastSyncTime: 1620795443.48046
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: app-temp.R|README.md

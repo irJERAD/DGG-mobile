@@ -12,8 +12,16 @@ ui <- f7Page(
         title = "My app",
         f7TabLayout(
             panels = tagList(
-                f7Panel(title = "About The App", side = "left", theme = "light", about_app, effect = "cover"),
-                f7Panel(title = "About The Author", side = "right", theme = "dark", about_author, effect = "cover")
+                f7Panel(title = "About The App",
+                        side = "left",
+                        theme = "light",
+                        about_app, 
+                        effect = "cover"),
+                f7Panel(title = "About The Author",
+                        side = "right",
+                        theme = "dark",
+                        about_author,
+                        effect = "cover")
             ),
             navbar = f7Navbar(
                 title = h1("DGG"),
