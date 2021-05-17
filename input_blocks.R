@@ -88,6 +88,7 @@ dataEntry_block <- function() {
     f7Accordion(
       id = "dataEntryAccordion",
       discName_accordion_item,
+      game_accordion_item,
       instructional_media_accordion_item,
       exercise_accordion_item,
       throw_accordion_item,
@@ -96,6 +97,8 @@ dataEntry_block <- function() {
   )
 }
 
+#' accordion item to Add A New Disc to collection database
+#' 
 discName_accordion_item <- f7AccordionItem(
   title = "Add Disc To Collection",
   f7Text(
@@ -115,38 +118,45 @@ discName_accordion_item <- f7AccordionItem(
     label = "Puchase Date",
     dateFormat = "mm-yyyy"
   ),
-  f7Text(
+  f7Stepper(
     inputId = "discWeight",
     label = "Disc Weight (grams)",
-    placeholder = "173"
+    min = 100, max = 200, value = 173, step = 0.1,
+    size = "small",
+    wraps = TRUE,
+    manual = TRUE
   ),
   f7Stepper(
     inputId = "discSpeed",
     label = h3("Disc Speed"),
     min = 1,max = 14,value = 1,
     size = "small",
-    wraps = TRUE
+    wraps = TRUE,
+    manual = TRUE
   ),
   f7Stepper(
     inputId = "discGlide",
     label = h3("Disc Glide"),
     min = 0,max = 7,value = 1,
     size = "small",
-    wraps = TRUE
+    wraps = TRUE,
+    manual = TRUE
   ),
   f7Stepper(
     inputId = "discTurn",
     label = h3("Disc Turn"),
     min = -5,max = 0,value = 0,
     size = "small",
-    wraps = TRUE
+    wraps = TRUE,
+    manual = TRUE
   ),
   f7Stepper(
     inputId = "discFade",
     label = h3("Disc Fade"),
     min = 0,max = 5,value = 1,
     size = "small",
-    wraps = TRUE
+    wraps = TRUE,
+    manual = TRUE
   ),
   f7Select(
     inputId = "discCondition",
@@ -175,7 +185,317 @@ discName_accordion_item <- f7AccordionItem(
            label = "Add Disc To Collection")
 )
 
+#' accordion item to Add A Game Of Disc Golf
+#' 
+game_accordion_item <- f7AccordionItem(
+  title = "Add Game of Disc",
+  f7Text(inputId = "gameCourseName",
+         label = "Course Name",
+         placeholder = "Enter Name Of Course Played"
+  ),
+  f7Select(inputId = "gameSize",
+           label = "Size Of Course",
+           choices = c("6-Hole","9-Hole","18-Hole"),
+           selected = "9-Hole"
+           ),
+  f7Stepper(
+    inputId = "hole1Par",
+    label = h3("Hole 1 Par"),
+    min = 2,max = 5,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole1Score",
+    label = h3("Hole 1 Score"),
+    min = 2,max = 15,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole2Par",
+    label = h3("Hole 2 Par"),
+    min = 2,max = 5,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole2Score",
+    label = h3("Hole 2 Score"),
+    min = 2,max = 15,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole3Par",
+    label = h3("Hole 3 Par"),
+    min = 2,max = 5,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole3Score",
+    label = h3("Hole 3 Score"),
+    min = 2,max = 15,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole4Par",
+    label = h3("Hole 4 Par"),
+    min = 2,max = 5,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole4Score",
+    label = h3("Hole 4 Score"),
+    min = 2,max = 15,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole5Par",
+    label = h3("Hole 5 Par"),
+    min = 2,max = 5,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole5Score",
+    label = h3("Hole 5 Score"),
+    min = 2,max = 15,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole6Par",
+    label = h3("Hole 6 Par"),
+    min = 2,max = 5,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  f7Stepper(
+    inputId = "hole6Score",
+    label = h3("Hole 6 Score"),
+    min = 2,max = 15,value = 3,step = 1,
+    wraps = TRUE,
+    size = "small",
+    manual = TRUE
+  ),
+  conditionalPanel(condition = "input.gameSize == '9-Hole' || 
+                   input.gameSize == '18-Hole'",
+                   f7Stepper(
+                     inputId = "hole7Par",
+                     label = h3("Hole 7 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole7Score",
+                     label = h3("Hole 7 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole8Par",
+                     label = h3("Hole 8 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole8Score",
+                     label = h3("Hole 8 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole9Par",
+                     label = h3("Hole 9 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole9Score",
+                     label = h3("Hole 9 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   )
+                   ),
+  conditionalPanel(condition = "input.gameSize == '18-Hole'",
+                   f7Stepper(
+                     inputId = "hole10Par",
+                     label = h3("Hole 10 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole10Score",
+                     label = h3("Hole 10 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole11Par",
+                     label = h3("Hole 11 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole11Score",
+                     label = h3("Hole 11 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole12Par",
+                     label = h3("Hole 12 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole12Score",
+                     label = h3("Hole 12 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole13Par",
+                     label = h3("Hole 13 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole13Score",
+                     label = h3("Hole 13 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole14Par",
+                     label = h3("Hole 14 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole14Score",
+                     label = h3("Hole 14 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole15Par",
+                     label = h3("Hole 15 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole15Score",
+                     label = h3("Hole 15 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole16Par",
+                     label = h3("Hole 16 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole16Score",
+                     label = h3("Hole 16 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole17Par",
+                     label = h3("Hole 17 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole17Score",
+                     label = h3("Hole 17 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole18Par",
+                     label = h3("Hole 18 Par"),
+                     min = 2,max = 5,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   ),
+                   f7Stepper(
+                     inputId = "hole18Score",
+                     label = h3("Hole 18 Score"),
+                     min = 2,max = 15,value = 3,step = 1,
+                     wraps = TRUE,
+                     size = "small",
+                     manual = TRUE
+                   )
+                   )
+)
 
+#' accordion item to Add Instructional Media
+#' any media you learned from such as Podcast, YouTube, blog
+#' 
 instructional_media_accordion_item <- f7AccordionItem(
     title = "Add Instructional Media",
     f7TextArea(
@@ -203,15 +523,21 @@ instructional_media_accordion_item <- f7AccordionItem(
                   "Multiple"),
       selected = "General Disc Golf"
     ),
-    f7Text(
+    f7Stepper(
       inputId = "mediaRepeats",
       label = "How Many Times Did You Watch / Read",
-      value = 1
+      min = 1, max = 99, value = 1, step = 1,
+      size = "small",
+      wraps = TRUE,
+      manual = TRUE
     ),
-    f7Text(
+    f7Stepper(
       inputId = "mediaTime",
       label = "Time Watching / Reading (min)",
-      placeholder = "min"
+      min = 0, max = 720, value = 30, step = 1,
+      size = "small",
+      wraps = TRUE,
+      manual = TRUE
     ),
     f7Button(
       inputId = "mediaAdd",
@@ -219,7 +545,8 @@ instructional_media_accordion_item <- f7AccordionItem(
     )
   )
 
-
+#' accordion item to Add Exercise Or Training Instance
+#' 
 exercise_accordion_item <- f7AccordionItem(
   title = "Add Training Session",
   f7TextArea(
@@ -274,7 +601,8 @@ exercise_accordion_item <- f7AccordionItem(
                              label = h3("Number of Reps"),
                              min = 1,max = 99,value = 1,
                              color = "blue", fill = FALSE,
-                             wraps = TRUE
+                             wraps = TRUE,
+                             manual = TRUE
                              )
                    ),
   conditionalPanel(condition = "input.activityType == 'Elevens'",
@@ -292,35 +620,40 @@ exercise_accordion_item <- f7AccordionItem(
                      label = h3("Shots Made At 11ft"),
                      min = 0,max = 5,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "elevens22Made",
                      label = h3("Shots Made At 22ft"),
                      min = 0,max = 5,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "elevens33Made",
                      label = h3("Shots Made At 33ft"),
                      min = 0,max = 5,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "elevens44Made",
                      label = h3("Shots Made At 44ft"),
                      min = 0,max = 5,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "elevens55Made",
                      label = h3("Shots Made At 55ft"),
                      min = 0,max = 5,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      )
                    ),
   conditionalPanel(condition = "input.activityType == 'Five-Up'",
@@ -338,35 +671,40 @@ exercise_accordion_item <- f7AccordionItem(
                      label = h3("Shots Made At 10ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "fiveUp15Made",
                      label = h3("Shots Made At 15ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "fiveUp20Made",
                      label = h3("Shots Made At 20ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "fiveUp25Made",
                      label = h3("Shots Made At 25ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      ),
                    f7Stepper(
                      inputId = "fiveUp30Made",
                      label = h3("Shots Made At 30ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                      )
                    ),
   conditionalPanel(condition = "input.activityType == 'Ten-Up'",
@@ -384,35 +722,40 @@ exercise_accordion_item <- f7AccordionItem(
                      label = h3("Shots Made At 10ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                    ),
                    f7Stepper(
                      inputId = "tenUp15Made",
                      label = h3("Shots Made At 15ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                    ),
                    f7Stepper(
                      inputId = "tenUp20Made",
                      label = h3("Shots Made At 20ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                    ),
                    f7Stepper(
                      inputId = "tenUp25Made",
                      label = h3("Shots Made At 25ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                    ),
                    f7Stepper(
                      inputId = "tenUp30Made",
                      label = h3("Shots Made At 30ft"),
                      min = 0,max = 50,value = 0,
                      color = "blue", fill = FALSE,
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                    )
   ),
   conditionalPanel(condition = "input.activityType == 'Towel Drill'",
@@ -421,7 +764,8 @@ exercise_accordion_item <- f7AccordionItem(
                      label = h3("Number of Reps"),
                      min = 1,max = 99,value = 1,
                      color = "blue",fill = FALSE, 
-                     wraps = TRUE
+                     wraps = TRUE,
+                     manual = TRUE
                    )
                    ),
   conditionalPanel(condition = "input.activityType == 'Driving Net'",
@@ -454,6 +798,8 @@ exercise_accordion_item <- f7AccordionItem(
                    )
   )
 
+#' accordion item to Add A Throw
+#' 
 throw_accordion_item <- f7AccordionItem(
   title = "Add Throw",
   f7AutoComplete(
@@ -465,10 +811,13 @@ throw_accordion_item <- f7AccordionItem(
                 ),
     openIn = "page"
   ),
-  f7Text(
+  f7Stepper(
     inputId = "throwDistance",
     label = "Distance Of Throw (feet)",
-    placeholder = "Feet",
+    min = 0, max = 700, value = 200, step = 1,
+    size = "small",
+    wraps = TRUE,
+    manual = TRUE
   ),
   f7Select(
     inputId = "throwForm",
@@ -512,6 +861,8 @@ throw_accordion_item <- f7AccordionItem(
   )
 )
 
+#' accordion item to Answer Twice Daily Wellbeing Survey
+#' 
 wellbeing_accordion_item <- f7AccordionItem(
   title = "Wellbeing Survey",
   f7TextArea(
@@ -584,9 +935,17 @@ wellbeing_accordion_item <- f7AccordionItem(
   f7Stepper(
     inputId = "wellbeingMeal",
     label = h3("Hours Since Last Meal"),
-    min = 0,max = 24,value = 4,
+    min = 0,max = 24,value = 4, step = 0.5,
     size = "small",
     wraps = TRUE
+  ),
+  f7Stepper(
+    inputId = "wellbeingWeight",
+    label = "Current Weight",
+    min = 50, max = 400, value = 160,step = 0.2,
+    size = "small",
+    wraps = TRUE,
+    manual = TRUE
   ),
   f7Select(
     inputId = "wellbeingMuscles",

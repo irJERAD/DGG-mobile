@@ -56,3 +56,19 @@ about_author <- paste(
 )
 
 discNameModal <- "For each disc you have or plan on using with this app you must input its information here. Name, Color, and Weight will be used to help you discern your different discs from each other later on in the apps data visualization and storytelling portions. Data disc flight numbers, age, type and weight will be used to compute statistics in order to provide insights for you on what your discs do and how that has changed over time and practice."
+
+numberOfPutts <- paste(
+  "A solid rule of thumb is that good putting form requires 1000 putts a week",
+  "to build up and maintain. This is strictly meant to maintain good form.",
+  "If you are trying out a new form or your putting game is in dire need of",
+  "improvement, then you should schedule an aditional 500 putts per",
+  "adjustment to you form or type of form you are experimenting with.",
+  br(),
+  "NOTE: The putts I am referring to here are choreographed and full-focused.",
+  "Putting around or free-putting does not count toward this amount.",
+  "Putting in games, while choreographed and focused also Do Not count",
+  "toward this total. A Good example of putts you can count are those",
+  "attained during training in a game such as 11's or 5-Up. Training and",
+  "exercise games require focus and are great places to hone in on building",
+  "muscle memory for your putts choreography."
+  )

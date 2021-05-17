@@ -3,10 +3,13 @@ library(shinyMobile)
 library(shinyWidgets)
 library(shinyTime)
 
+library(icons)
+
 #' load text variables
 source("text.R")
 #' load input boxes for ui
 source("input_blocks.R")
+ic <- icon_set("images")
 
 ui <- f7Page(
         title = "My app",
@@ -24,7 +27,7 @@ ui <- f7Page(
                         effect = "cover")
             ),
             navbar = f7Navbar(
-                title = h1("DGG"),
+                title = "DGG",
                 hairline = TRUE,
                 shadow = TRUE,
                 leftPanel = TRUE,
@@ -68,7 +71,11 @@ ui <- f7Page(
                     tabName = "Tips",
                     icon = f7Icon("pin"),
                     active = FALSE,
-                    f7Align(h2("Some Tips, Ticks, and How To"),side = "center")
+                    f7Align(h2("Some Tips, Ticks, and How To"),side = "center"),
+                    f7ExpandableCard(
+                    #  image = "/images/root-fill-white.png",
+                      numberOfPutts
+                    )
                 )
             )
         )
